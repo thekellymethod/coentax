@@ -2,7 +2,17 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --coentax-black: #0a0a0a;
+  --coentax-ink: #0a0a0a;
+  --coentax-accent: #dc2626;
+  --coentax-accent-dim: rgba(220, 38, 38, 0.35);
+  --coentax-white: #ffffff;
+  --coentax-surface: #fafafa;
+  --coentax-hero: #050505;
+  --coentax-muted: #737373;
+  --coentax-parallax-x: 0px;
+  --coentax-parallax-y: 0px;
 }
 
 @theme inline {
@@ -12,15 +22,248 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes coentax-grid-drift {
+  0% {
+    transform: perspective(520px) rotateX(76deg) translateY(0) translateZ(0);
+  }
+  100% {
+    transform: perspective(520px) rotateX(76deg) translateY(40px) translateZ(0);
   }
 }
 
+@keyframes coentax-grid-drift-slow {
+  0% {
+    transform: perspective(640px) rotateX(68deg) translateY(0) scale(1.05)
+      translateZ(0);
+  }
+  100% {
+    transform: perspective(640px) rotateX(68deg) translateY(-28px) scale(1.05)
+      translateZ(0);
+  }
+}
+
+@keyframes coentax-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg);
+  }
+  50% {
+    transform: translate3d(10px, -16px, 0) rotateY(6deg);
+  }
+}
+
+@keyframes coentax-float-delayed {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg);
+  }
+  50% {
+    transform: translate3d(-12px, 12px, 0) rotateY(-8deg);
+  }
+}
+
+@keyframes coentax-pulse-line {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes coentax-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes coentax-orb-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(8%, 6%) scale(1.12);
+    opacity: 0.5;
+  }
+}
+
+@keyframes coentax-orb-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.05);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate(-10%, -4%) scale(1);
+    opacity: 0.38;
+  }
+}
+
+@keyframes coentax-orb-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.18;
+  }
+  33% {
+    transform: translate(5%, -8%) scale(1.08);
+    opacity: 0.32;
+  }
+  66% {
+    transform: translate(-6%, 4%) scale(0.96);
+    opacity: 0.24;
+  }
+}
+
+@keyframes coentax-shimmer-beam {
+  0%,
+  100% {
+    opacity: 0.03;
+    transform: rotate(12deg) scaleY(1);
+  }
+  50% {
+    opacity: 0.09;
+    transform: rotate(12deg) scaleY(1.15);
+  }
+}
+
+@keyframes coentax-dash-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.coentax-hero-grid {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: -38%;
+  height: 78%;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      rgba(220, 38, 38, 0.14) 1px,
+      transparent 1px
+    ),
+    linear-gradient(rgba(220, 38, 38, 0.08) 1px, transparent 1px);
+  background-size:
+    32px 32px,
+    32px 32px,
+    128px 128px,
+    128px 128px;
+  transform-origin: 50% 100%;
+  animation: coentax-grid-drift 22s linear infinite;
+  mask-image: linear-gradient(
+    to top,
+    black 0%,
+    rgba(0, 0, 0, 0.85) 35%,
+    transparent 78%
+  );
+}
+
+.coentax-hero-grid--slow {
+  bottom: -42%;
+  height: 82%;
+  opacity: 0.55;
+  background-size:
+    48px 48px,
+    48px 48px,
+    192px 192px,
+    192px 192px;
+  animation: coentax-grid-drift-slow 38s linear infinite reverse;
+  mask-image: linear-gradient(
+    to top,
+    black 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    transparent 85%
+  );
+}
+
+.coentax-hero-parallax {
+  transform: translate3d(var(--coentax-parallax-x), var(--coentax-parallax-y), 0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.coentax-wire-cube {
+  transform-style: preserve-3d;
+  animation: coentax-float-slow 16s ease-in-out infinite;
+}
+
+.coentax-wire-cube--b {
+  animation: coentax-float-delayed 20s ease-in-out infinite;
+}
+
+.coentax-orbit {
+  animation: coentax-spin-slow 56s linear infinite;
+}
+
+.coentax-mesh-orb-a {
+  animation: coentax-orb-a 22s ease-in-out infinite;
+}
+
+.coentax-mesh-orb-b {
+  animation: coentax-orb-b 28s ease-in-out infinite;
+}
+
+.coentax-mesh-orb-c {
+  animation: coentax-orb-c 32s ease-in-out infinite;
+}
+
+.coentax-beam {
+  animation: coentax-shimmer-beam 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coentax-hero-grid,
+  .coentax-hero-grid--slow,
+  .coentax-wire-cube,
+  .coentax-wire-cube--b,
+  .coentax-orbit,
+  .coentax-mesh-orb-a,
+  .coentax-mesh-orb-b,
+  .coentax-mesh-orb-c,
+  .coentax-beam,
+  .coentax-trust-glow,
+  .coentax-trust-orbit {
+    animation: none !important;
+  }
+
+  .coentax-hero-parallax {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+html {
+  overflow-x: clip;
+}
+
+.coentax-safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.coentax-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 body {
-  background: var(--background);
+  overflow-x: clip;
+  background: var(--coentax-surface);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
