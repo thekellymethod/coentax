@@ -9,7 +9,7 @@ export function SiteFooter() {
       className="border-t border-red-600/40 bg-[var(--coentax-hero)] text-neutral-300"
     >
       <div className="coentax-safe-bottom mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="font-semibold text-white">{siteConfig.name}</p>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-neutral-400">
@@ -45,6 +45,35 @@ export function SiteFooter() {
                 >
                   {siteConfig.whatsAppDisplay}
                 </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-white">Explore</p>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/about"
+                  className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/start-tax-return"
+                  className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
+                >
+                  Start tax return
+                </Link>
               </li>
             </ul>
           </div>

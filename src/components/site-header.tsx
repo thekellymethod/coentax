@@ -6,6 +6,8 @@ import { siteConfig } from "@/lib/site-config";
 export const mainNavLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#how-it-works", label: "How it works" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
   { href: "/start-tax-return", label: "Start return" },
   { href: "/#contact", label: "Contact" },
 ] as const;

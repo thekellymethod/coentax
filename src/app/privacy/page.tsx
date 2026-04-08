@@ -18,8 +18,8 @@ export default function PrivacyPage() {
       </Link>
       <h1 className="mt-6 text-3xl font-bold text-neutral-900">Privacy notice</h1>
       <p className="mt-4 text-neutral-600">
-        This page is a placeholder summary. Replace with advice from your legal
-        or compliance advisor before going live.
+        This preview summary explains how information is handled on this demo
+        site. Replace with your approved POPIA-compliant policy before launch.
       </p>
       <div className="mt-8 space-y-4 leading-relaxed text-neutral-700">
         <p>
@@ -38,6 +38,29 @@ export default function PrivacyPage() {
           </a>
           .
         </p>
+        <p>
+          By submitting the intake form, you consent to us processing submitted
+          details and uploaded files for the purpose of providing tax-related
+          services and support.
+        </p>
+        <p>
+          You can request correction or deletion of your information where
+          legally permitted by contacting us directly.
+        </p>
+      </div>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/legal"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg border border-neutral-300 px-5 py-3 text-base font-medium text-neutral-900 transition hover:bg-neutral-100 sm:text-sm"
+        >
+          Terms &amp; legal
+        </Link>
+        <Link
+          href="/start-tax-return"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[var(--coentax-accent)] px-5 py-3 text-base font-semibold text-white transition hover:brightness-110 sm:text-sm"
+        >
+          Start tax return
+        </Link>
       </div>
     </div>
   );

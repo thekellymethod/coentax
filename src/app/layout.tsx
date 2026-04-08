@@ -38,6 +38,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const watermarkRows = ["PREVIEW", "PREVIEW", "PREVIEW", "PREVIEW"];
+
   return (
     <html
       lang="en"
@@ -45,6 +47,13 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-[var(--coentax-surface)] font-sans text-neutral-900">
         <SiteShell>{children}</SiteShell>
+        <div aria-hidden className="coentax-preview-watermark">
+          <div className="coentax-preview-watermark__sheet">
+            {watermarkRows.map((label, index) => (
+              <span key={`${label}-${index}`}>{label}</span>
+            ))}
+          </div>
+        </div>
       </body>
     </html>
   );

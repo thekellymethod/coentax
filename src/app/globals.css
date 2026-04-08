@@ -267,3 +267,31 @@ body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+
+.coentax-preview-watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+}
+
+.coentax-preview-watermark__sheet {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2.25rem);
+  transform: rotate(-28deg) translateY(-2%);
+  user-select: none;
+}
+
+.coentax-preview-watermark__sheet > span {
+  font-size: clamp(2rem, 11vw, 8rem);
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.11);
+  line-height: 1;
+  white-space: nowrap;
+}

@@ -20,16 +20,46 @@ export default function LegalPage() {
         Terms &amp; legal
       </h1>
       <p className="mt-4 text-neutral-600">
-        Placeholder content. Have a qualified professional draft your terms of
-        service, disclaimers, and SARS-related disclosures.
+        This preview summary highlights core legal points for demonstration.
+        Have a qualified professional draft your final terms of service,
+        disclaimers, and SARS-related disclosures before launch.
       </p>
-      <div className="mt-8 leading-relaxed text-neutral-700">
+      <div className="mt-8 space-y-4 leading-relaxed text-neutral-700">
         <p>
           Use of this website does not create a client relationship until{" "}
           {siteConfig.name} confirms engagement in writing. Information on this
           site is general in nature and not tax or legal advice for your
           specific situation.
         </p>
+        <p>
+          Time-sensitive filings remain your responsibility unless agreed
+          otherwise in writing. You should verify deadlines and SARS notices
+          promptly.
+        </p>
+        <p>
+          For details on data handling, please review our{" "}
+          <Link
+            href="/privacy"
+            className="text-[var(--coentax-accent)] underline-offset-2 hover:underline"
+          >
+            privacy notice
+          </Link>
+          .
+        </p>
+      </div>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/start-tax-return"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[var(--coentax-accent)] px-5 py-3 text-base font-semibold text-white transition hover:brightness-110 sm:text-sm"
+        >
+          Start tax return
+        </Link>
+        <Link
+          href="/faq"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg border border-neutral-300 px-5 py-3 text-base font-medium text-neutral-900 transition hover:bg-neutral-100 sm:text-sm"
+        >
+          Read FAQ
+        </Link>
       </div>
     </div>
   );
