@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CoenTaxLogo } from "@/components/coentax-logo";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -11,8 +12,8 @@ export function SiteFooter() {
       <div className="coentax-safe-bottom mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-semibold text-white">{siteConfig.name}</p>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-neutral-400">
+            <CoenTaxLogo variant="footer" />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-400">
               South African income tax returns and compliance support. Secure
               handling of your documents and information.
             </p>
@@ -73,6 +74,14 @@ export function SiteFooter() {
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
                   Start tax return
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/admin"
+                  className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
+                >
+                  Admin portal (preview)
                 </Link>
               </li>
             </ul>

@@ -1,6 +1,8 @@
 /** Update these values for your live domain and contact channels. */
 export const siteConfig = {
   name: "CoenTax",
+  /** File in `/public` — used in header, footer, and admin bar. */
+  logoPath: "/coentax-logo.png",
   domain: "coentax.co.za",
   contactEmail: "hello@coentax.co.za",
   phoneDisplay: "+27 (0) 00 000 0000",

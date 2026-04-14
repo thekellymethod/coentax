@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CoenTaxLogo } from "@/components/coentax-logo";
 import { CurrentYear } from "@/components/current-year";
 import { MobileNav } from "@/components/mobile-nav";
 import { siteConfig } from "@/lib/site-config";
@@ -18,15 +19,10 @@ export function SiteHeader() {
       <div className="coentax-safe-top mx-auto flex min-h-14 max-w-6xl items-center justify-between gap-2 px-4 py-2 sm:min-h-16 sm:gap-4 sm:px-6 sm:py-0">
         <Link
           href="/"
-          className="flex min-w-0 shrink items-center gap-2 font-semibold tracking-tight text-neutral-900"
+          className="flex min-w-0 shrink items-center gap-2 text-neutral-900"
+          aria-label={`${siteConfig.name} home`}
         >
-          <span
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--coentax-accent)] text-sm font-bold text-white"
-            aria-hidden
-          >
-            CT
-          </span>
-          <span className="truncate">{siteConfig.name}</span>
+          <CoenTaxLogo variant="header" priority />
         </Link>
         <nav
           className="hidden items-center gap-6 text-sm font-medium text-neutral-600 md:flex"

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SiteShell } from "@/components/site-shell";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -46,7 +45,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[var(--coentax-surface)] font-sans text-neutral-900">
-        <SiteShell>{children}</SiteShell>
+        {children}
         <div aria-hidden className="coentax-preview-watermark">
           <div className="coentax-preview-watermark__sheet">
             {watermarkRows.map((label, index) => (
