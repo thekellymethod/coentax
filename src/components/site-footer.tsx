@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { CoenTaxLogo } from "@/components/coentax-logo";
+import type { MarketingCopy } from "@/lib/i18n/marketing";
 import { siteConfig } from "@/lib/site-config";
 
-export function SiteFooter() {
+type Props = {
+  marketing: MarketingCopy;
+};
+
+export function SiteFooter({ marketing }: Props) {
   const year = new Date().getFullYear();
+  const f = marketing.footer;
+
   return (
     <footer
       id="contact"
@@ -14,12 +21,11 @@ export function SiteFooter() {
           <div>
             <CoenTaxLogo variant="footer" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-400">
-              South African income tax returns and compliance support. Secure
-              handling of your documents and information.
+              {f.blurb}
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-white">Contact</p>
+            <p className="text-sm font-semibold text-white">{f.contact}</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
                 <a
@@ -50,14 +56,14 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-white">Explore</p>
+            <p className="text-sm font-semibold text-white">{f.explore}</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
                 <Link
                   href="/about"
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
-                  About
+                  {f.about}
                 </Link>
               </li>
               <li>
@@ -65,7 +71,7 @@ export function SiteFooter() {
                   href="/faq"
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
-                  FAQ
+                  {f.faq}
                 </Link>
               </li>
               <li>
@@ -73,7 +79,7 @@ export function SiteFooter() {
                   href="/start-tax-return"
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
-                  Start tax return
+                  {f.startReturn}
                 </Link>
               </li>
               <li>
@@ -81,20 +87,20 @@ export function SiteFooter() {
                   href="/admin"
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
-                  Admin portal (preview)
+                  {f.adminPreview}
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-white">Legal</p>
+            <p className="text-sm font-semibold text-white">{f.legal}</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
                 <Link
                   href="/privacy"
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
-                  Privacy
+                  {f.privacy}
                 </Link>
               </li>
               <li>
@@ -102,15 +108,14 @@ export function SiteFooter() {
                   href="/legal"
                   className="block py-2 text-neutral-300 transition hover:text-red-500 [touch-action:manipulation] sm:py-0.5"
                 >
-                  Terms &amp; legal
+                  {f.terms}
                 </Link>
               </li>
             </ul>
           </div>
         </div>
         <p className="mt-10 border-t border-white/10 pt-8 text-center text-xs text-neutral-500">
-          © {year} {siteConfig.name}. All rights reserved. ·{" "}
-          {siteConfig.domain}
+          © {year} {siteConfig.name}. {f.rightsReserved} · {siteConfig.domain}
         </p>
       </div>
     </footer>

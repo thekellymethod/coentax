@@ -4,35 +4,15 @@ import {
   LandingDimensionArt,
   TrustDimensionArt,
 } from "@/components/landing-dimension-art";
+import { getLocale } from "@/lib/i18n/locale";
+import { getMarketingCopy } from "@/lib/i18n/marketing";
 import { siteConfig } from "@/lib/site-config";
 
-const services = [
-  {
-    title: "Individual income tax returns",
-    text: "Preparation and review of your ITR12 and supporting schedules.",
-  },
-  {
-    title: "Tax compliance assistance",
-    text: "Stay on track with SARS requirements and filing obligations.",
-  },
-  {
-    title: "Tax submission support",
-    text: "Guidance through eFiling and resolving submission issues.",
-  },
-  {
-    title: "Document review & processing",
-    text: "We review IRP5s, certificates, and expense proofs you upload.",
-  },
-];
+export default async function HomePage() {
+  const locale = await getLocale();
+  const t = getMarketingCopy(locale);
+  const h = t.home;
 
-const steps = [
-  { title: "Complete the form", text: "Tell us how we can help and share your contact details." },
-  { title: "Upload supporting documents", text: "IRP5s, medical aid, RA certificates, and other docs — securely." },
-  { title: "We review and process", text: "Our team assesses your information and prepares next actions." },
-  { title: "You receive next steps", text: "We contact you with a clear plan and any follow-up required." },
-];
-
-export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-[var(--coentax-hero)] text-white">
@@ -42,36 +22,41 @@ export default function HomePage() {
             {siteConfig.name}
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-            Professional help with your South African tax return
+            {h.heroTitle}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-            {siteConfig.description}
+            {h.heroDescription}
           </p>
+          <ul className="mt-8 flex max-w-3xl flex-wrap gap-2 sm:gap-3">
+            {h.heroTrust.map((line) => (
+              <li
+                key={line}
+                className="rounded-full border border-white/25 bg-white/5 px-3 py-1.5 text-xs text-white/90 sm:text-sm"
+              >
+                {line}
+              </li>
+            ))}
+          </ul>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               href="/start-tax-return"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-[var(--coentax-accent)] px-6 py-3.5 text-base font-semibold text-white shadow-lg transition hover:brightness-110 sm:w-auto"
             >
-              Start Your <CurrentYear /> Tax Return
+              {h.heroPrimaryCtaBefore}{" "}
+              <CurrentYear /> {h.heroPrimaryCtaAfter}
             </Link>
             <div className="flex flex-col gap-2 sm:ml-2 sm:flex-row sm:flex-wrap">
               <Link
                 href="/#services"
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white/35 px-5 py-3 text-base font-medium text-white transition active:bg-white/15 sm:w-auto sm:text-sm"
               >
-                Get Tax Help
-              </Link>
-              <Link
-                href="/start-tax-return#documents"
-                className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white/35 px-5 py-3 text-base font-medium text-white transition active:bg-white/15 sm:w-auto sm:text-sm"
-              >
-                Upload Your Documents
+                {h.heroSecondaryServices}
               </Link>
               <Link
                 href="/#contact"
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white/35 px-5 py-3 text-base font-medium text-white transition active:bg-white/15 sm:w-auto sm:text-sm"
               >
-                Request Assistance
+                {h.heroSecondaryContact}
               </Link>
             </div>
           </div>
@@ -83,13 +68,13 @@ export default function HomePage() {
         className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"
       >
         <h2 className="text-center text-2xl font-bold text-neutral-900 sm:text-3xl">
-          What we help with
+          {h.servicesTitle}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
-          Focused support for individuals — without overwhelming detail.
+          {h.servicesSubtitle}
         </p>
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
+          {h.services.map((s) => (
             <li
               key={s.title}
               className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:border-neutral-900"
@@ -109,13 +94,13 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-center text-2xl font-bold text-neutral-900 sm:text-3xl">
-            How it works
+            {h.howTitle}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-neutral-600">
-            A straightforward process so you know exactly what happens next.
+            {h.howSubtitle}
           </p>
           <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => (
+            {h.steps.map((step, i) => (
               <li key={step.title} className="relative">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--coentax-accent)] text-sm font-bold text-white">
                   {i + 1}
@@ -139,33 +124,18 @@ export default function HomePage() {
           </div>
           <div className="order-1 lg:order-2">
             <h2 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              Why clients trust {siteConfig.name}
+              {h.trustTitle}
             </h2>
-            <p className="mt-4 leading-relaxed text-neutral-600">
-              We focus on South African income tax — from annual returns to
-              ongoing compliance. Your documents are handled securely, and we
-              only use your information to deliver the tax assistance you
-              requested.
-            </p>
+            <p className="mt-4 leading-relaxed text-neutral-600">{h.trustLead}</p>
             <ul className="mt-6 space-y-3 text-sm text-neutral-800">
-              <li className="flex gap-2">
-                <span className="text-[var(--coentax-accent)]" aria-hidden>
-                  ✓
-                </span>
-                Secure upload and storage of tax documents
-              </li>
-              <li className="flex gap-2">
-                <span className="text-[var(--coentax-accent)]" aria-hidden>
-                  ✓
-                </span>
-                South African tax assistance — not generic offshore advice
-              </li>
-              <li className="flex gap-2">
-                <span className="text-[var(--coentax-accent)]" aria-hidden>
-                  ✓
-                </span>
-                Clear communication on timelines and next steps
-              </li>
+              {h.trustBullets.map((line) => (
+                <li key={line} className="flex gap-2">
+                  <span className="text-[var(--coentax-accent)]" aria-hidden>
+                    ✓
+                  </span>
+                  {line}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -183,17 +153,14 @@ export default function HomePage() {
         />
         <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="text-balance text-2xl font-bold sm:text-3xl">
-            Ready to get your <CurrentYear /> return moving?
+            {h.ctaTitleBefore} <CurrentYear /> {h.ctaTitleAfter}
           </h2>
-          <p className="mt-4 text-white/75">
-            Start the intake — it only takes a few minutes. We will reach out
-            after we review your submission.
-          </p>
+          <p className="mt-4 text-white/75">{h.ctaSubtitle}</p>
           <Link
             href="/start-tax-return"
             className="mt-8 inline-flex min-h-12 w-full max-w-md items-center justify-center rounded-lg bg-[var(--coentax-accent)] px-8 py-3.5 text-base font-semibold text-white shadow-lg transition hover:brightness-110 sm:w-auto"
           >
-            Start Your <CurrentYear /> Tax Return
+            {h.ctaButtonBefore} <CurrentYear /> {h.ctaButtonAfter}
           </Link>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getLocale } from "@/lib/i18n/locale";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -32,16 +33,18 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const watermarkRows = ["PREVIEW", "PREVIEW", "PREVIEW", "PREVIEW"];
+  const locale = await getLocale();
+  const htmlLang = locale === "en" ? "en" : "af";
 
   return (
     <html
-      lang="en"
+      lang={htmlLang}
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[var(--coentax-surface)] font-sans text-neutral-900">
